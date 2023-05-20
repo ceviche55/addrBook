@@ -1,0 +1,6 @@
+# Test files will have "tst" in front and won't be included
+tst*
+
+# Build files
+build/
+CMakeLists.txt
