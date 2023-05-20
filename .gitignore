@@ -3,4 +3,3 @@ tst*
 
 # Build files
 build/
-CMakeLists.txt
