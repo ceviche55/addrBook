@@ -1,12 +1,12 @@
 # Address Book Notes
 
 ## Menu
+- Contact Add
 - Contact Display
   - Contact Sorting
 - Contact Search
   - Contact Deletion
   - Contact Update
-- Contact Add
 
 ## Contact Cards
 - Name
@@ -14,5 +14,20 @@
 - Phone Number
 - Notes
 
-## Description
-The address book project involves creating a program that allows users to store and manage contact information. It serves as a digital directory where users can add, search, update, and delete contacts. The program should provide a user-friendly interface and offer features to efficiently manage a collection of contacts.
+## Implementation Timeline
+- Display
+  - Displaying all objects
+- Add
+  - Pushing another object into the list
+- Delete
+  - Removing an object from the list
+- Update
+  - Finding the element in the list
+  - Replacing the values in the element
+- Search
+  - Finding the element in the list
+  - Displaying said array
+- Sort
+  - Loading the objects into memory
+  - Sorting the objects based on object variable
+  - Outputing objects

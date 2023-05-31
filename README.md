@@ -10,3 +10,6 @@ Goals:
 - Use data structures
 - Practice commenting
 - Practice making an app all the way through
+
+Update (5/31):
+I will be putting json and persistence on paues due to difficulty with importing cpp libraries and documentation
