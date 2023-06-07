@@ -8,14 +8,23 @@ using namespace std;
 int main() {
     vector<contactCard> contactList;
 
+    contactCard tempContCard;
+    tempContCard.setName("Khalid Hamu");
+    tempContCard.setNickName("Kade");
+    tempContCard.setPhoneNum(1234567890);
+    tempContCard.setNotes("Coffee lover");
+    contactList.push_back(tempContCard);
+
     while (true) {
         int userChoice;
         cout << "Contact Book Menu\n\n";
-        cout << "1. Add New Contact\n";
-        cout << "2. Display All Contacts\n";
-        cout << "3. Exit\n";
+        cout << "\t1. Add New Contact\n";
+        cout << "\t2. Display All Contacts\n";
+        cout << "\t3. Delete Contact(s)\n";
+        cout << "\t4. Search Contacts\n";
+        cout << "\t0. Exit\n";
 
-        cout << "Choice: ";
+        cout << "\n\tChoice: ";
         cin >> userChoice;
         std::cout << "-----------" << std::endl;
 
@@ -26,10 +35,17 @@ int main() {
             case 2:
                 printAllContacts(contactList);
                 break;
+            case 3:
+                deleteContact(contactList);
+                break;
+            case 4:
+                searchContact(contactList);
+                break;
+            default:
+                cout << "\nNow Exiting.";
+                return 0;
+                break;
         }
-
-        if (userChoice != 2 && userChoice != 1) {break;}
     }
-
     return 0;
 }

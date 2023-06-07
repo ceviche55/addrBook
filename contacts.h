@@ -28,7 +28,11 @@ class contactCard {
 };
 
 contactCard newContact();
-void printContacts(const contactCard& contCardRef);
+void printContact(const contactCard& contCardRef);
 void printAllContacts(const std::vector<contactCard> contactListRef);
+void deleteContact(std::vector<contactCard> &contactListRef);
+void searchContact(std::vector<contactCard> &contactListRef);
+void changeContactDetails(contactCard& contCardRef);
+void updateContact(std::vector<contactCard> &contactListRef);
 
 #endif

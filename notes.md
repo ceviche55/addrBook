@@ -17,16 +17,18 @@
 ## Implementation Timeline
 - [X] Add
   - Pushing another object into the list
-- [ ] Display
+- [X] Display
   - Displaying all objects
-- [ ] Delete
+- [X] Delete
   - Removing an object from the list
+- [X] Search
+  - Finding the element in the list
+  - Displaying said element
+  - **Assumptions made**
+    - Each field is unique
 - [ ] Update
   - Finding the element in the list
   - Replacing the values in the element
-- [ ] Search
-  - Finding the element in the list
-  - Displaying said array
 - [ ] Sort
   - Loading the objects into memory
   - Sorting the objects based on object variable
