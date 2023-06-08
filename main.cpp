@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <vector>
 #include <string>
 #include "contacts.h"
@@ -39,7 +40,9 @@ int main() {
                 deleteContact(contactList);
                 break;
             case 4:
-                searchContact(contactList);
+                if (!searchContact(contactList)) {
+                    cout << "\t\nNo Contact Found\n";
+                }
                 break;
             default:
                 cout << "\nNow Exiting.";

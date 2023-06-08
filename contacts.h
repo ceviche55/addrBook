@@ -31,7 +31,7 @@ contactCard newContact();
 void printContact(const contactCard& contCardRef);
 void printAllContacts(const std::vector<contactCard> contactListRef);
 void deleteContact(std::vector<contactCard> &contactListRef);
-void searchContact(std::vector<contactCard> &contactListRef);
+bool searchContact(std::vector<contactCard> &contactListRef);
 void changeContactDetails(contactCard& contCardRef);
 void updateContact(std::vector<contactCard> &contactListRef);
 

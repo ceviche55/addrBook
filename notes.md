@@ -1,5 +1,11 @@
 # Address Book Notes
 
+## Contact Cards
+- Name
+- Nickname
+- Phone Number
+- Notes
+
 ## Menu
 - Contact Add
 - Contact Display
@@ -7,12 +13,6 @@
 - Contact Search
   - Contact Deletion
   - Contact Update
-
-## Contact Cards
-- Name
-- Nickname
-- Phone Number
-- Notes
 
 ## Implementation Timeline
 - [X] Add
@@ -26,7 +26,7 @@
   - Displaying said element
   - **Assumptions made**
     - Each field is unique
-- [ ] Update
+- [X] Update
   - Finding the element in the list
   - Replacing the values in the element
 - [ ] Sort

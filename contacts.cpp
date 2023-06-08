@@ -23,14 +23,14 @@ contactCard::contactCard() {
 
 contactCard newContact() {
     contactCard newContactCard;
-    
+
     std::string name;
     std::string nickname;
     long phoneNum;
     std::string notes;
 
     std::cout << "New Contact Information\n\n" <<
-            "\tName:\t";
+        "\tName:\t";
     std::cin.ignore();
     getline(std::cin, name);
     std::cout << "\tNickname:\t";
@@ -77,67 +77,83 @@ void deleteContact(std::vector<contactCard> &contactListRef) {
 
         std::cout << "Do you want to delete this contact (Y or N)? ";
         std::cin >> userChoice;
-        
+
         switch (userChoice) {
             case 'y':
             case 'Y':
-               contactListRef.erase(contactListRef.begin() + i);
-               break;
+                contactListRef.erase(contactListRef.begin() + i);
+                break;
             default:
-               break;
+                break;
         }
     }
     std::cout << "----------" << std::endl;
-    
+
 }
 
 void changeContactDetails(contactCard& contCardRef) {
-    char userChoice;
+    int userChoice;
     std::string newString;
     long newLong;
 
-    printContact(contCardRef);
-
-    std::cout << std::endl << "\t\tChange Name (Y or N)? ";
+    std::cout << std::endl << "\t\tChange Name (1 = Yes, 2 = No)? ";
     std::cin >> userChoice;
-
-    switch (userChoice) {
-    case 'y':
-    case 'Y':
-        std::cout << "\t\tNew Name:\t";
-        std::cin.ignore();
-        std::getline(std::cin, newString);
-        contCardRef.setName(newString);
-        break;
-    default:
-        break;
+    if (userChoice == 1) {
+            std::cout << "\t\tNew Name:\t";
+            std::cin.ignore();
+            std::getline(std::cin, newString);
+            contCardRef.setName(newString);
     }
+
+    std::cout << std::endl << "\t\tChange Nickname (1 = Yes, 2 = No)? ";
+    std::cin >> userChoice;
+    if (userChoice == 1) {
+            std::cout << "\t\tNew Nickname:\t";
+            std::cin.ignore();
+            std::getline(std::cin, newString);
+            contCardRef.setNickName(newString);
+    }
+
+    std::cout << std::endl << "\t\tChange Phone Number (1 = Yes, 2 = No)? ";
+    std::cin >> userChoice;
+    if (userChoice == 1) {
+            std::cout << "\t\tNew Phone Number:\t";
+            std::cin >> newLong;
+            contCardRef.setPhoneNum(newLong);
+    }
+
+    std::cout << std::endl << "\t\tChange Notes (1 = Yes, 2 = No)? ";
+    std::cin >> userChoice;
+    if (userChoice == 1) {
+            std::cout << "\t\tNew Notes:\t";
+            std::cin.ignore();
+            std::getline(std::cin, newString);
+            contCardRef.setNotes(newString);
+    }
+
+    std::cout << "\n\tNew Contact Details:\n";
+    printContact(contCardRef);
 }
 
 void updateContact(std::vector<contactCard> &contactListRef) {
-    char userChoice;
+    int userChoice;
     std::cout << "Contact Deletion:\n\n";
     for (int i = 0; i < contactListRef.size(); i++) {
         printContact(contactListRef[i]);
         std::cout << std::endl;
 
-        std::cout << "\tDo you want to update this contact (Y or N)? ";
+        std::cout << "\tDo you want to update this contact (1 = Yes, 2 = No)? ";
         std::cin >> userChoice;
-        
-        switch (userChoice) {
-            case 'y':
-            case 'Y':
-                changeContactDetails(contactListRef[i]);
-               break;
-            default:
-               break;
+
+        if (userChoice == 1) {
+            changeContactDetails(contactListRef[i]);
         }
     }
     std::cout << "----------" << std::endl;
-    
+
 }
 
-void searchContact(std::vector<contactCard> &contactListRef) {
+bool searchContact(std::vector<contactCard> &contactListRef) {
     int userChoice;
     std::string userSearch;
 
@@ -149,30 +165,49 @@ void searchContact(std::vector<contactCard> &contactListRef) {
     std::cout << "\t3. Phone Number\n";
     std::cout << "\n\tChoice:\t";
     std::cin >> userChoice;
+    if ((userChoice < 1) or (userChoice > 3)) {return false;}
 
-    std::cout << "\n\n\tSearch (exact):\t";
+    std::cout << "\n\tSearch (exact):\t";
     std::cin.ignore();
     std::getline(std::cin, userSearch);
+
+    std::cout << std::endl;
 
     for (contactCard elem : contactListRef) {
         switch (userChoice) {
             case 1:
-               if (elem.getName() == userSearch) {
-                 printContact(elem);
-               }
-               break;
+                if (elem.getName() == userSearch) {
+                    std::cout << "\tFound Contact:\n";
+                    printContact(elem);
+                    std::cout << "\n\tUpdate Contact (1 = Yes, 2 = No)? ";
+                    std::cin >> userChoice;
+                    if (userChoice == 1) {changeContactDetails(elem);}
+                    return true;
+                }
+                break;
             case 2:
-               if (elem.getNickname() == userSearch) {
-                 printContact(elem);
-               }
-               break;
+                if (elem.getNickname() == userSearch) {
+                    std::cout << "\tFound Contact:\n";
+                    printContact(elem);
+                    std::cout << "\n\tUpdate Contact (1 = Yes, 2 = No)? ";
+                    std::cin >> userChoice;
+                    if (userChoice == 1) {changeContactDetails(elem);}
+                    return true;
+                }
+                break;
             case 3:
-               if (std::to_string(elem.getPhoneNum()) == userSearch) {
-                 printContact(elem);
-               }
-               break;
+                if (std::to_string(elem.getPhoneNum()) == userSearch) {
+                    std::cout << "\tFound Contact:\n";
+                    printContact(elem);
+                    std::cout << "\n\tUpdate Contact (1 = Yes, 2 = No)? ";
+                    std::cin >> userChoice;
+                    if (userChoice == 1) {changeContactDetails(elem);}
+                    return true;
+                }
+                break;
             default:
-                std::cout << "\n\tInvalid Choice!\n";
+                std::cout << "\tInvalid Choice!\n";
         }
     }
+    return false;
 }
