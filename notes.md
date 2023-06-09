@@ -29,7 +29,7 @@
 - [X] Update
   - Finding the element in the list
   - Replacing the values in the element
-- [ ] Sort
+- [X] Sort
   - Loading the objects into memory
   - Sorting the objects based on object variable
   - Outputing objects

@@ -2,6 +2,7 @@
 #include <ostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 #include "contacts.h"
 
 std::string contactCard::getName() const {return name;}
@@ -68,7 +69,7 @@ void printAllContacts(const std::vector<contactCard> contactListRef) {
     std::cout << "----------" << std::endl;
 }
 
-void deleteContact(std::vector<contactCard> &contactListRef) {
+void deleteContactFromList(std::vector<contactCard> &contactListRef) {
     char userChoice;
     std::cout << "Contact Deletion:\n\n";
     for (int i = 0; i < contactListRef.size(); i++) {
@@ -209,5 +210,46 @@ bool searchContact(std::vector<contactCard> &contactListRef) {
                 std::cout << "\tInvalid Choice!\n";
         }
     }
+    return false;
+}
+
+bool sortContact(std::vector<contactCard> &contactListRef) {
+    int userMenuChoice;
+    
+    std::cout << "\tDo you want to sort the contacts (1 = Yes, 2 = No)? ";
+    std::cin >> userMenuChoice;
+
+    if (userMenuChoice == 2) {return false;}
+
+    std::cout << "What field do you want to sort them by?\n";
+    std::cout << "\t1. Name\n";
+    std::cout << "\t2. Nickname\n";
+    std::cout << "\t3. Phone Number\n";
+    std::cout << "\tChoice: ";
+    std::cin >> userMenuChoice;
+
+    switch (userMenuChoice) {
+        case 1:
+            std::sort(contactListRef.begin(), contactListRef.end(), [](const contactCard &lhs, const contactCard &rhs){
+                return lhs.getName() < rhs.getName();
+            });
+            return true;
+            break;
+        case 2:
+            std::sort(contactListRef.begin(), contactListRef.end(), [](const contactCard &lhs, const contactCard &rhs){
+                return lhs.getNickname() < rhs.getNickname();
+            });
+            return true;
+            break;
+        case 3:
+            std::sort(contactListRef.begin(), contactListRef.end(), [](const contactCard &lhs, const contactCard &rhs){
+                return lhs.getPhoneNum() < rhs.getPhoneNum();
+            });
+            return true;
+            break;
+        default:
+            break;
+    }
+
     return false;
 }

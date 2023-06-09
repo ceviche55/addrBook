@@ -9,12 +9,30 @@ using namespace std;
 int main() {
     vector<contactCard> contactList;
 
-    contactCard tempContCard;
-    tempContCard.setName("Khalid Hamu");
-    tempContCard.setNickName("Kade");
-    tempContCard.setPhoneNum(1234567890);
-    tempContCard.setNotes("Coffee lover");
-    contactList.push_back(tempContCard);
+    // Section for Importing Contacts from database file
+    fstream contactCsv("Database.csv");
+    string line, cell;
+
+    getline(contactCsv, line);
+    
+    while (getline(contactCsv, line)) {
+        stringstream sSLine(line);
+        contactCard tempContCard;
+
+        getline(sSLine, cell, ',');
+        tempContCard.setName(cell);
+        
+        getline(sSLine, cell, ',');
+        tempContCard.setNickName(cell);
+
+        getline(sSLine, cell, ',');
+        tempContCard.setPhoneNum(stol(cell));
+
+        getline(sSLine, cell, ',');
+        tempContCard.setNotes(cell);
+
+        contactList.push_back(tempContCard);
+    }
 
     while (true) {
         int userChoice;
@@ -34,15 +52,14 @@ int main() {
                 contactList.push_back(newContact());
                 break;
             case 2:
+                if (!sortContact(contactList)) {cout << "Contacts not Sorted\n";}
                 printAllContacts(contactList);
                 break;
             case 3:
-                deleteContact(contactList);
+                deleteContactFromList(contactList);
                 break;
             case 4:
-                if (!searchContact(contactList)) {
-                    cout << "\t\nNo Contact Found\n";
-                }
+                if (!searchContact(contactList)) {cout << "\t\nNo Contact Found\n";}
                 break;
             default:
                 cout << "\nNow Exiting.";
