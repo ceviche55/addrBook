@@ -26,5 +26,6 @@ Goals:
 - Practice commenting
 - Practice making an app all the way through
 
+---
 Reflection:
 I had fun with this project, its been a while since I have used c++ and I have been both enjoying and not enjoying it. I feel more confident in my next steps as a coder, I now have a better sence of programming with the goal of making something usable. I was also able to incorporate some the design skills I learned for my minor, which takes me one step closer to my dream of combining computer science and design. My plans are now to recreate this project in golang with more complex data structures and more complex algorithms.
